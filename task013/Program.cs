@@ -8,12 +8,18 @@
 
 int ThreeDigital(int num)
 {
-    int numN = num / 100 % 10;
-    numN = Math.Abs(numN);
-    return (Math.Abs(num))/100 > 0 ? numN : -1;
+    num = Math.Abs(num);
+    int numN = 1;
+    int numMin = num;
+    while (numMin / 100 > 0)
+    {
+        numN = numMin % 10;
+        numMin = numMin / 10;
+    }
+    return num / 100 > 0 ? numN : -1;
 }
 Console.Write("Введите число :");
 int number = Convert.ToInt32(Console.ReadLine());
 int numberOutput = ThreeDigital(number);
-string output = numberOutput < 0 ? $"{number} -> третьeй цифры нет" : $"третья цифра числа {number} -> {numberOutput}";
+string output = numberOutput < 0 ? $"{number} -> третьeй цифры нет" : $"{number} -> {numberOutput}";
 Console.WriteLine(output);
