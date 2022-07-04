@@ -10,7 +10,7 @@ int ThreeDigital(int num)
 {
     int numN = num / 100 % 10;
     numN = Math.Abs(numN);
-    return (int)Math.Log10(Math.Abs(num)) > 1 ? numN : -1;
+    return (Math.Abs(num))/100 > 0 ? numN : -1;
 }
 Console.Write("Введите число :");
 int number = Convert.ToInt32(Console.ReadLine());
