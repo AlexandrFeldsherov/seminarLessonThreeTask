@@ -3,7 +3,7 @@
 14212 -> нет
 12821 -> да
 23432 -> да*/
-bool DeterminingNumber(string num)
+bool DeterminingNumber(string num)//проверка введены ли числа
 {
     foreach (var item in num)
     {
@@ -12,7 +12,7 @@ bool DeterminingNumber(string num)
     }
     return true;
 }
-int Long(string lon)
+int Long(string lon)// подсчет количества введенных символов
 {
     int i = 0;
     foreach (var item in lon)
@@ -21,7 +21,7 @@ int Long(string lon)
     }
     return i;
 }
-string Palindrome(string number)
+string Palindrome(string number) //определяет палиндром ли строка
 {
     int i = 0;
     foreach (var item in number)
@@ -53,26 +53,16 @@ string Palindrome(string number)
 }
 Console.Clear();
 string outputResult;
-Console.Write("Введите пятизначное число, положительное число: ");
+Console.Write("Введите пятизначное, положительное число: ");
 string number = Console.ReadLine();
-int longStringNumber = Long(number);//длинна вводимой строки
-bool determiningNumber = DeterminingNumber(number);//определение ввод чисел
-if (determiningNumber != true)
+while (true)
 {
-    Console.WriteLine("Ввод не соответствует условию");
-    Console.Write("Введите пятизначное число, положительное число: ");
-    number = Console.ReadLine();
-}
-else if (longStringNumber != 5)
-{
+    if (!String.IsNullOrEmpty(number) && DeterminingNumber(number) && Long(number) == 5)//проверка на NULL && проверка введено ли число && проверка 5 знаков ли число
     {
-        Console.WriteLine("Ввод не соответствует условию");
-        Console.Write("Введите пятизначное число, положительное число: ");
-        number = Console.ReadLine();
+        break;
     }
+Console.Write("Неверный ввод, введите пятизначное положительное число: ");
+number = Console.ReadLine();
 }
-else 
-{
 outputResult = Palindrome(number);//метод определяет палинром ли строка
 Console.WriteLine(outputResult);
-}
